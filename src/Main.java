@@ -23,6 +23,7 @@ public class Main {
                 printList(tasks);
             }
             else if (choice == 3) {
+                printList(tasks);
                 deleteTask(tasks, scanner);
             }
             else if (choice == 4) {
@@ -42,15 +43,8 @@ public class Main {
     }
 
     public static void printList(ArrayList<Task> tasks){
-        int i=1;
-        for(Task x: tasks){
-            System.out.print(i+". "+x.name+" ");
-            if(x.isDone){
-                System.out.println("Done");
-            }else{
-                System.out.println("Not Done");
-            }
-            i++;
+        for(int i=1 ; i<=tasks.size() ;i++){
+            System.out.println(i+". "+tasks.get(i-1));
         }
     }
     public static void markAsDone(ArrayList<Task> tasks, Scanner scanner){
@@ -80,5 +74,14 @@ class Task{
     Task(String name) {
         this.name = name;
         this.isDone = false;
+    }
+    public String toString(){
+        String status;
+        if (isDone){
+            status = "DONE";
+        }else{
+            status = "NOT DONE";
+        }
+        return name + " - " + status;
     }
 }
